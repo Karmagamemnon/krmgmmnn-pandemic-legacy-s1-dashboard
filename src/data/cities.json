@@ -1,0 +1,31 @@
+[{
+        "name": "Londres",
+        "infectionCards": 2,
+        "playerCards": 2
+    },
+    {
+        "name": "Washington",
+        "infectionCards": 3,
+        "playerCards": 3
+    },
+    {
+        "name": "Paris",
+        "infectionCards": 2,
+        "playerCards": 2
+    },
+    {
+        "name": "New-York",
+        "infectionCards": 3,
+        "playerCards": 3
+    },
+    {
+        "name": "San Francisco",
+        "infectionCards": 2,
+        "playerCards": 2
+    },
+    {
+        "name": "Moscou",
+        "infectionCards": 2,
+        "playerCards": 2
+    }
+]
