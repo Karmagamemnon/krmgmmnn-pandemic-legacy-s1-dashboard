@@ -1,29 +1,22 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { App } from './components/App';
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { Home } from './components/pages/Home';
+import "./index.css";
 import reportWebVitals from './reportWebVitals';
 
-import { Home } from './components/pages/Home';
-
-import cities from './data/cities.json';
-
-import "./index.css";
-
-if (localStorage.getItem("cities") === null)
-    localStorage.setItem("cities", JSON.stringify(cities));
-
-ReactDOM.render(
+const root = createRoot(document.getElementById("root"));
+root.render(
     <React.StrictMode>
-        <Router>
+        <BrowserRouter>
             <App>
                 <Routes>
-                    <Route exact path="/" component={Home} />
+                    <Route path="/" element={<Home />} />
                 </Routes>
             </App>
-        </Router>
-    </React.StrictMode>,
-    document.getElementById('root')
+        </BrowserRouter>
+    </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
