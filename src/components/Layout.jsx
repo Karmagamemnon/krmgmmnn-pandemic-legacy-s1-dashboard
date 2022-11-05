@@ -1,12 +1,8 @@
 import DashboardIcon from '@mui/icons-material/Dashboard';
-import RotateLeftIcon from '@mui/icons-material/RotateLeft';
-import { AppBar, Box, Container, IconButton, Toolbar, Typography } from '@mui/material';
+import { AppBar, Box, Container, Toolbar, Typography } from '@mui/material';
 import React from 'react';
-import { useCities } from '../contexts/CitiesContext';
 
 export const Layout = (props) => {
-
-    const { reset } = useCities();
 
     const classes = {
         content: {
@@ -24,9 +20,6 @@ export const Layout = (props) => {
                     <Typography sx={classes.link} variant="h5">
                         Pandemic Legacy Season 1 dashboard
                     </Typography>
-                    <IconButton edge="start" color="inherit" aria-label="menu" onClick={reset}>
-                        <RotateLeftIcon fontSize="large" color="inherit" />
-                    </IconButton>
                 </Box>
             </Toolbar>
         </AppBar>

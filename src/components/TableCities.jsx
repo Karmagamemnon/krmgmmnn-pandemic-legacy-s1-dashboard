@@ -1,4 +1,5 @@
 import CoronavirusIcon from '@mui/icons-material/Coronavirus';
+import LocationCityIcon from '@mui/icons-material/LocationCity';
 import { Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
 import Paper from '@mui/material/Paper';
 import React from 'react';
@@ -6,7 +7,7 @@ import { useCities } from '../contexts/CitiesContext';
 
 const TableCities = () => {
 
-    const { cities, infestCity } = useCities();
+    const { cities, cureCity, infestCity } = useCities();
 
     const _renderRisk = (city) => {
         const { risk } = city;
@@ -33,6 +34,7 @@ const TableCities = () => {
         <Table sx={{ minWidth: 650 }} size="small">
             <TableHead>
                 <TableRow>
+                    <TableCell sx={{ maxWidth: "20px" }}></TableCell>
                     <TableCell>Ville</TableCell>
                     <TableCell align="right">%</TableCell>
                     <TableCell>Infestées - Révélées - Total</TableCell>
@@ -42,14 +44,25 @@ const TableCities = () => {
             <TableBody>
                 {!!cities && Array.isArray(cities) &&
                     cities
-                        .sort((a, b) => a.risk < b.risk)
+                        .filter(city => city.risk > 0 || city.revealedInfectionCards > 0)
+                        .sort((a, b) => {
+                            if (a.risk > b.risk) return -1;
+                            if (a.risk < b.risk) return 1;
+                            if (a.name > b.name) return 1;
+                            if (a.name < b.name) return -1;
+                        })
                         .map(city =>
-                            <TableRow key={city.name} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                                <TableCell component="th" scope="row">{city.name}</TableCell>
+                            <TableRow key={city.name} sx={{
+                                "&:last-child td, &:last-child th": { border: 0 },
+                                "&:hover": { backgroundColor: "lightgrey" },
+                            }}>
+                                <TableCell component="th" scope="row" sx={{ maxWidth: 20 }}><LocationCityIcon fontSize="large" sx={{ color: city.color }} /></TableCell>
+                                <TableCell>{city.name}</TableCell>
                                 <TableCell align="right">{_renderRisk(city)}</TableCell>
                                 <TableCell>{_renderIcons(city)}</TableCell>
                                 <TableCell>
                                     <Button disabled={city.drawnInfectionCards >= city.infectionCards} onClick={() => infestCity(city.name)}>Infect</Button>
+                                    <Button disabled={city.drawnInfectionCards === 0} onClick={() => cureCity(city.name)}>Cure</Button>
                                 </TableCell>
                             </TableRow>
                         )

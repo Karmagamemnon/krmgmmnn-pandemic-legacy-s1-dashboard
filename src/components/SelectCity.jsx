@@ -8,24 +8,19 @@ const SelectCity = (props) => {
 
     const { onChange, value } = props;
 
-    return <Box>
-
-        <InputLabel id="select-city-label">Ville</InputLabel>
-        <Select
-            labelId="select-city-label"
-            id="select-city"
-            onChange={onChange}
-            sx={{ minWidth: 300 }}
-            value={value}
-        >
-            {!!cities && Array.isArray(cities) &&
-                cities
-                    .sort()
-                    .map(city => <MenuItem key={city.name} value={city}>{city.name}</MenuItem>)
-            }
-        </Select>
-
-    </Box>
+    return <Select
+        labelId="select-city-label"
+        id="select-city"
+        onChange={onChange}
+        sx={{ maxHeight: 40, minWidth: 300 }}
+        value={value}
+    >
+        {!!cities && Array.isArray(cities) &&
+            cities
+                .sort((a, b) => a.name > b.name)
+                .map(city => <MenuItem key={city.name} value={city}>{city.name}</MenuItem>)
+        }
+    </Select>
 
 };
 

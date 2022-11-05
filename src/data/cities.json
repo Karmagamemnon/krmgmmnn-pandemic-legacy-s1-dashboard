@@ -75,43 +75,43 @@
         "name": "Bogotá",
         "infectionCards": 1,
         "playerCards": 0,
-        "color": "yellow"
+        "color": "gold"
     },
     {
         "name": "Kinshasa",
         "infectionCards": 1,
         "playerCards": 0,
-        "color": "yellow"
+        "color": "gold"
     },
     {
         "name": "Mexico",
         "infectionCards": 1,
         "playerCards": 0,
-        "color": "yellow"
+        "color": "gold"
     },
     {
         "name": "Santiago",
         "infectionCards": 1,
         "playerCards": 0,
-        "color": "yellow"
+        "color": "gold"
     },
     {
         "name": "Khartoum",
         "infectionCards": 1,
         "playerCards": 0,
-        "color": "yellow"
+        "color": "gold"
     },
     {
         "name": "Johannesburg",
         "infectionCards": 1,
         "playerCards": 0,
-        "color": "yellow"
+        "color": "gold"
     },
     {
         "name": "Lagos",
         "infectionCards": 1,
         "playerCards": 0,
-        "color": "yellow"
+        "color": "gold"
     },
     {
         "name": "Shanghai",
@@ -189,25 +189,25 @@
         "name": "Los Angeles",
         "infectionCards": 1,
         "playerCards": 0,
-        "color": "yellow"
+        "color": "gold"
     },
     {
         "name": "Miami",
         "infectionCards": 1,
         "playerCards": 0,
-        "color": "yellow"
+        "color": "gold"
     },
     {
         "name": "Buenos Aires",
         "infectionCards": 1,
         "playerCards": 0,
-        "color": "yellow"
+        "color": "gold"
     },
     {
-        "name": "Sã Paulo",
+        "name": "São Paulo",
         "infectionCards": 1,
         "playerCards": 0,
-        "color": "yellow"
+        "color": "gold"
     },
     {
         "name": "Chicago",
@@ -285,6 +285,6 @@
         "name": "Lima",
         "infectionCards": 1,
         "playerCards": 0,
-        "color": "yellow"
+        "color": "gold"
     }
 ]
