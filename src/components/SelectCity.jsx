@@ -9,15 +9,13 @@ const SelectCity = (props) => {
     const { onChange, value } = props;
 
     return <Select
-        labelId="select-city-label"
-        id="select-city"
         onChange={onChange}
         sx={{ maxHeight: 40, minWidth: 300, backgroundColor: "white" }}
         value={value}
     >
         {!!cities && Array.isArray(cities) &&
             cities
-                .filter(city => !city.isDrawn && city.lastOutbreakIndex === 0)
+                .filter(city => !city.isDrawn && city.lastEpidemicIndex === 0)
                 .sort((a, b) => a.name > b.name)
                 .map(city => <MenuItem key={city.name} value={city}>{city.name}</MenuItem>)
         }
