@@ -1,4 +1,4 @@
-import { Box, InputLabel, MenuItem, Select } from '@mui/material';
+import { MenuItem, Select } from '@mui/material';
 import React from 'react';
 import { useCities } from '../contexts/CitiesContext';
 
@@ -12,11 +12,12 @@ const SelectCity = (props) => {
         labelId="select-city-label"
         id="select-city"
         onChange={onChange}
-        sx={{ maxHeight: 40, minWidth: 300 }}
+        sx={{ maxHeight: 40, minWidth: 300, backgroundColor: "white" }}
         value={value}
     >
         {!!cities && Array.isArray(cities) &&
             cities
+                .filter(city => !city.isDrawn && city.lastOutbreakIndex === 0)
                 .sort((a, b) => a.name > b.name)
                 .map(city => <MenuItem key={city.name} value={city}>{city.name}</MenuItem>)
         }
@@ -30,3 +31,4 @@ SelectCity.defaultProps = {
 };
 
 export { SelectCity };
+

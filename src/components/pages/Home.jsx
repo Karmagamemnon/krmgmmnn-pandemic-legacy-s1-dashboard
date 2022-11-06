@@ -7,18 +7,19 @@ import { TableCities } from '../TableCities';
 export const Home = (props) => {
 
     const { reset } = useCities();
-    const [cityName, setCityName] = useState("");
+    const [city, setCity] = useState({});
     const [outbreakIndex, setOutbreakIndex] = useState(1);
 
     return <Box>
-        <Box sx={{ display: "flex", flexDirection: "rox", gap: "8px" }}>
+        <Box sx={{ display: "flex", flexDirection: "rox", gap: "8px", padding: "10px", backgroundColor: "lightgrey" }}>
             <SelectCity
-                onChange={(event) => setCityName(event.target.value.name)}
-                value={cityName}
+                onChange={(event) => setCity(event.target.value)}
+                value={city}
             />
-            <Button onClick={() => {
-                reset(cityName, outbreakIndex);
+            <Button disabled={!city.name && !city.idDrawn} onClick={() => {
+                reset(city.name, outbreakIndex);
                 setOutbreakIndex(outbreakIndex + 1);
+                setCity({});
             }}>Epidémie</Button>
         </Box>
         <TableCities />

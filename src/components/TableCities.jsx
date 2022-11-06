@@ -22,11 +22,11 @@ const TableCities = () => {
     };
 
     const _renderIcons = (city) => {
-        const { infectionCards, drawnInfectionCards, revealedInfectionCards } = city;
+        const { isDrawn, lastOutbreakIndex } = city;
         let icons = [];
-        for (let i = 1; i <= drawnInfectionCards; i++) icons.push(<CoronavirusIcon key={`d${i}`} fontSize="large" color="error" />)
-        for (let i = 1; i <= revealedInfectionCards - drawnInfectionCards; i++) icons.push(<CoronavirusIcon key={`r${i}`} fontSize="large" sx={{ color: "gold" }} />)
-        for (let i = 1; i <= infectionCards - revealedInfectionCards; i++) icons.push(<CoronavirusIcon key={i} fontSize="large" color="inherit" />)
+        if (isDrawn) return <CoronavirusIcon fontSize="large" color="error" />;
+        else if (lastOutbreakIndex > 0) return <CoronavirusIcon fontSize="large" sx={{ color: "gold" }} />;
+        else return <CoronavirusIcon fontSize="large" color="inherit" />;
         return icons;
     };
 
@@ -34,7 +34,7 @@ const TableCities = () => {
         <Table sx={{ minWidth: 650 }} size="small">
             <TableHead>
                 <TableRow>
-                    <TableCell sx={{ maxWidth: "20px" }}></TableCell>
+                    <TableCell sx={{ maxWidth: 20 }}></TableCell>
                     <TableCell>Ville</TableCell>
                     <TableCell align="right">%</TableCell>
                     <TableCell>Infestées - Révélées - Total</TableCell>
@@ -44,12 +44,15 @@ const TableCities = () => {
             <TableBody>
                 {!!cities && Array.isArray(cities) &&
                     cities
-                        .filter(city => city.risk > 0 || city.revealedInfectionCards > 0)
+                        //.filter(city => city.risk > 0 || city.lastOutbreakIndex === 0)
                         .sort((a, b) => {
                             if (a.risk > b.risk) return -1;
                             if (a.risk < b.risk) return 1;
+                            if (a.lastOutbreakIndex > b.lastOutbreakIndex) return -1;
+                            if (a.lastOutbreakIndex < b.lastOutbreakIndex) return 1;
                             if (a.name > b.name) return 1;
                             if (a.name < b.name) return -1;
+                            else return 0;
                         })
                         .map(city =>
                             <TableRow key={city.name} sx={{
@@ -61,8 +64,8 @@ const TableCities = () => {
                                 <TableCell align="right">{_renderRisk(city)}</TableCell>
                                 <TableCell>{_renderIcons(city)}</TableCell>
                                 <TableCell>
-                                    <Button disabled={city.drawnInfectionCards >= city.infectionCards} onClick={() => infestCity(city.name)}>Infect</Button>
-                                    <Button disabled={city.drawnInfectionCards === 0} onClick={() => cureCity(city.name)}>Cure</Button>
+                                    <Button disabled={city.isDrawn} onClick={() => infestCity(city.name)}>Infect</Button>
+                                    <Button disabled={!city.isDrawn} onClick={() => cureCity(city.name)}>Cure</Button>
                                 </TableCell>
                             </TableRow>
                         )

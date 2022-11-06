@@ -1,289 +1,241 @@
 [
     {
         "name": "Chennai",
-        "infectionCards": 1,
         "playerCards": 0,
         "color": "black"
     },
     {
         "name": "Moscou",
-        "infectionCards": 1,
         "playerCards": 0,
         "color": "black"
     },
     {
         "name": "Bagdad",
-        "infectionCards": 1,
         "playerCards": 0,
         "color": "black"
     },
     {
         "name": "Karachi",
-        "infectionCards": 1,
         "playerCards": 0,
         "color": "black"
     },
     {
         "name": "Riyad",
-        "infectionCards": 1,
         "playerCards": 0,
         "color": "black"
     },
     {
         "name": "Alger",
-        "infectionCards": 1,
         "playerCards": 0,
         "color": "black"
     },
     {
         "name": "Téhéran",
-        "infectionCards": 1,
         "playerCards": 0,
         "color": "black"
     },
     {
         "name": "Mumbai",
-        "infectionCards": 1,
         "playerCards": 0,
         "color": "black"
     },
     {
         "name": "Le Caire",
-        "infectionCards": 1,
         "playerCards": 0,
         "color": "black"
     },
     {
         "name": "Delhi",
-        "infectionCards": 1,
         "playerCards": 0,
         "color": "black"
     },
     {
         "name": "Calcutta",
-        "infectionCards": 1,
         "playerCards": 0,
         "color": "black"
     },
     {
         "name": "Istanbul",
-        "infectionCards": 1,
         "playerCards": 0,
         "color": "black"
     },
     {
         "name": "Bogotá",
-        "infectionCards": 1,
         "playerCards": 0,
         "color": "gold"
     },
     {
         "name": "Kinshasa",
-        "infectionCards": 1,
         "playerCards": 0,
         "color": "gold"
     },
     {
         "name": "Mexico",
-        "infectionCards": 1,
         "playerCards": 0,
         "color": "gold"
     },
     {
         "name": "Santiago",
-        "infectionCards": 1,
         "playerCards": 0,
         "color": "gold"
     },
     {
         "name": "Khartoum",
-        "infectionCards": 1,
         "playerCards": 0,
         "color": "gold"
     },
     {
         "name": "Johannesburg",
-        "infectionCards": 1,
         "playerCards": 0,
         "color": "gold"
     },
     {
         "name": "Lagos",
-        "infectionCards": 1,
         "playerCards": 0,
         "color": "gold"
     },
     {
         "name": "Shanghai",
-        "infectionCards": 1,
         "playerCards": 0,
         "color": "red"
     },
     {
         "name": "Pékin",
-        "infectionCards": 1,
         "playerCards": 0,
         "color": "red"
     },
     {
         "name": "Jakarta",
-        "infectionCards": 1,
         "playerCards": 0,
         "color": "red"
     },
     {
         "name": "Sydney",
-        "infectionCards": 1,
         "playerCards": 0,
         "color": "red"
     },
     {
         "name": "Séoul",
-        "infectionCards": 1,
         "playerCards": 0,
         "color": "red"
     },
     {
         "name": "Bangkok",
-        "infectionCards": 1,
         "playerCards": 0,
         "color": "red"
     },
     {
         "name": "Manille",
-        "infectionCards": 1,
         "playerCards": 0,
         "color": "red"
     },
     {
         "name": "Hô-Chi-Minh-Ville",
-        "infectionCards": 1,
         "playerCards": 0,
         "color": "red"
     },
     {
         "name": "Hong-Kong",
-        "infectionCards": 1,
         "playerCards": 0,
         "color": "red"
     },
     {
         "name": "Tokyo",
-        "infectionCards": 1,
         "playerCards": 0,
         "color": "red"
     },
     {
         "name": "Osaka",
-        "infectionCards": 1,
         "playerCards": 0,
         "color": "red"
     },
     {
         "name": "Taipei",
-        "infectionCards": 1,
         "playerCards": 0,
         "color": "red"
     },
     {
         "name": "Los Angeles",
-        "infectionCards": 1,
         "playerCards": 0,
         "color": "gold"
     },
     {
         "name": "Miami",
-        "infectionCards": 1,
         "playerCards": 0,
         "color": "gold"
     },
     {
         "name": "Buenos Aires",
-        "infectionCards": 1,
         "playerCards": 0,
         "color": "gold"
     },
     {
         "name": "São Paulo",
-        "infectionCards": 1,
         "playerCards": 0,
         "color": "gold"
     },
     {
         "name": "Chicago",
-        "infectionCards": 1,
         "playerCards": 0,
         "color": "blue"
     },
     {
         "name": "Madrid",
-        "infectionCards": 1,
         "playerCards": 0,
         "color": "blue"
     },
     {
         "name": "Essen",
-        "infectionCards": 1,
         "playerCards": 0,
         "color": "blue"
     },
     {
         "name": "San Francisco",
-        "infectionCards": 1,
         "playerCards": 0,
         "color": "blue"
     },
     {
         "name": "Washington",
-        "infectionCards": 1,
         "playerCards": 0,
         "color": "blue"
     },
     {
         "name": "Paris",
-        "infectionCards": 1,
         "playerCards": 0,
         "color": "blue"
     },
     {
         "name": "Milan",
-        "infectionCards": 1,
         "playerCards": 0,
         "color": "blue"
     },
     {
         "name": "New York",
-        "infectionCards": 1,
         "playerCards": 0,
         "color": "blue"
     },
     {
-        "name": "Lonres",
-        "infectionCards": 1,
+        "name": "Londres",
         "playerCards": 0,
         "color": "blue"
     },
     {
         "name": "Atlanta",
-        "infectionCards": 1,
         "playerCards": 0,
         "color": "blue"
     },
     {
         "name": "Saint-Pétersbourg",
-        "infectionCards": 1,
         "playerCards": 0,
         "color": "blue"
     },
     {
         "name": "Montréal",
-        "infectionCards": 1,
         "playerCards": 0,
         "color": "blue"
     },
     {
         "name": "Lima",
-        "infectionCards": 1,
         "playerCards": 0,
         "color": "gold"
     }

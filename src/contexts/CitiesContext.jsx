@@ -2,21 +2,17 @@ import React from 'react';
 import citiesDb from '../data/cities.json';
 
 const determinateRisks = (cities) => {
-    const lastIndex = Math.max(...cities.map(city => city.lastOutbreakIndex));
+    const undrawnCities = cities.filter(city => !city.isDrawn);
+    const lastIndex = Math.max(...undrawnCities.map(city => city.lastOutbreakIndex));
+    const citiesOnTop = cities.filter(city => city.lastOutbreakIndex === lastIndex);
+
     return cities.map(city => {
-        const { infectionCards, drawnInfectionCards, revealedInfectionCards, lastOutbreakIndex } = city;
-
-        const totalCards = cities.reduce((a, b) => a + b.infectionCards, 0);
-        const totalRevealedCards = cities.reduce((a, b) => a + b.revealedInfectionCards, 0);
-        const totalDrawnCards = cities.reduce((a, b) => a + b.drawnInfectionCards, 0);
-
-        // let risk = 0;
-        // if (totalDrawnCards >= totalRevealedCards) risk = 100 * (infectionCards - drawnInfectionCards) / (totalCards - totalDrawnCards);
-        // else risk = 100 * (revealedInfectionCards - drawnInfectionCards) / (totalRevealedCards - totalDrawnCards);
+        const { isDrawn, lastOutbreakIndex } = city;
+        const totalDrawnCards = citiesOnTop.reduce((a, b) => a + (b.isDrawn ? 1 : 0), 0);
 
         let risk = 0;
-        if (lastOutbreakIndex === lastIndex)
-            risk = 100 * (infectionCards - drawnInfectionCards) / (totalCards - totalDrawnCards);
+        if (!isDrawn && lastOutbreakIndex === lastIndex)
+            risk = 100 * 1 / (citiesOnTop.length - totalDrawnCards);
 
         risk = Math.round(risk * 100) / 100;
 
@@ -27,10 +23,8 @@ const determinateRisks = (cities) => {
 const initialize = (cities) => {
     return cities.map(city => ({
         ...city,
-        drawnInfectionCards: 0,
-        revealedInfectionCards: 0,
-        lastOutbreakIndex: 0,
-        drawnPlayerCards: 0
+        isDrawn: false,
+        lastOutbreakIndex: 0
     }));
 };
 
@@ -45,8 +39,7 @@ const useCities = () => {
         let updatedCities = [...cities];
         const index = updatedCities.findIndex(city => city.name === cityName);
         let city = cities[index];
-        city.drawnInfectionCards++;
-        city.revealedInfectionCards = Math.max(city.revealedInfectionCards, city.drawnInfectionCards);
+        city.isDrawn = true;
         updatedCities.splice(index, 1);
         updatedCities.push(city);
         updatedCities = determinateRisks(updatedCities);
@@ -57,8 +50,7 @@ const useCities = () => {
         let updatedCities = [...cities];
         const index = updatedCities.findIndex(city => city.name === cityName);
         let city = cities[index];
-        city.drawnInfectionCards--;
-        city.revealedInfectionCards = Math.max(city.revealedInfectionCards, city.drawnInfectionCards);
+        city.isDrawn = false;
         updatedCities.splice(index, 1);
         updatedCities.push(city);
         updatedCities = determinateRisks(updatedCities);
@@ -68,10 +60,9 @@ const useCities = () => {
     const reset = (cityName, outbreakIndex) => {
         infestCity(cityName);
         let updatedCities = cities.map(city => {
-            if (city.drawnInfectionCards > 0) return ({ ...city, lastOutbreakIndex: outbreakIndex, drawnInfectionCards: 0 });
-            else return ({ ...city, lastOutbreakIndex: outbreakIndex, drawnInfectionCards: 0 });
+            const lastOutbreakIndex = city.isDrawn ? outbreakIndex : city.lastOutbreakIndex;
+            return { ...city, lastOutbreakIndex, isDrawn: false };
         });
-        updatedCities = cities.map(city => ({ ...city, drawnInfectionCards: 0 }));
         updatedCities = determinateRisks(updatedCities);
         setCities(updatedCities);
     };
