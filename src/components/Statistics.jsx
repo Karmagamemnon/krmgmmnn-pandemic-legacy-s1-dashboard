@@ -10,7 +10,7 @@ const Statistics = () => {
     const { cities } = useCities();
 
     const { epidemicIndex, fundingLevel, infectionRate, totalDrawnInfectionCards, totalDrawnPlayerCards } = gameData;
-    const totalPlayerCards = cities.length + 5 + 2 * fundingLevel;
+    const totalPlayerCards = cities.length + 5 + fundingLevel - 8;
 
     let stacks = [];
     for (let i = 0; i <= 4; i++)
@@ -29,7 +29,7 @@ const Statistics = () => {
 
     return <Box sx={{ minWidth: 250 }}>
         <List sx={{ position: "fixed", width: 240 }} dense>
-        <ListItem>
+            <ListItem>
                 <ListItemText primary="Vitesse de propagation" />
                 <Typography edge="end">{infectionRate}</Typography>
             </ListItem>
@@ -53,11 +53,11 @@ const Statistics = () => {
             </ListItem>
             <ListItem>
                 <ListItemText primary="Cartes Joueur piochées" />
-                <Typography edge="end">{totalDrawnPlayerCards}</Typography>
+                <Typography edge="end">{Math.round(totalDrawnPlayerCards)}</Typography>
             </ListItem>
             <ListItem>
                 <ListItemText primary="Cartes Joueur restantes" />
-                <Typography edge="end">{totalPlayerCards - totalDrawnPlayerCards}</Typography>
+                <Typography edge="end">{Math.round(totalPlayerCards - totalDrawnPlayerCards)}</Typography>
             </ListItem>
             <ListItem>
                 <ListItemText primary="Tour restants" />
@@ -69,7 +69,7 @@ const Statistics = () => {
             {stacks.map((stack, index) => {
                 if (index > epidemicIndex) return <ListItem key={index}>
                     <ListItemText primary={`Epidémie #${index}`} />
-                    <Typography edge="end">{Math.max(1, stack.totalCardsPreviousStacks - totalDrawnPlayerCards + 1)} - {stack.totalCardsPreviousStacks - totalDrawnPlayerCards + stack.totalCards}</Typography>
+                    <Typography edge="end">{Math.max(1, Math.round(stack.totalCardsPreviousStacks - totalDrawnPlayerCards + 1))} - {Math.round(stack.totalCardsPreviousStacks - totalDrawnPlayerCards + stack.totalCards)}</Typography>
                 </ListItem>;
                 else return null;
             })}

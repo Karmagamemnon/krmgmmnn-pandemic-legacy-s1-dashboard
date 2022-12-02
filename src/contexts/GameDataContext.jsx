@@ -30,7 +30,7 @@ const useGameData = () => {
 
         const ratio = 2 / updatedGameData.infectionRate;
         if (updatedGameData.totalDrawnInfectionCards > 9)
-            updatedGameData.totalDrawnPlayerCards += ratio;
+            updatedGameData.totalDrawnPlayerCards += Math.round(ratio * 100) / 100;
 
         setGameData(updatedGameData);
         return updatedGameData.epidemicIndex;
